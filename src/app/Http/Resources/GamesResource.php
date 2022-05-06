@@ -18,6 +18,7 @@ class GamesResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'developer' => $this->developer->name,
+            'status' => $this->status->name,
             'genres' => $this->genres->pluck('name'),
             'created_at' => $this->created_at,
         ];

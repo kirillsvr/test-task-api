@@ -25,6 +25,8 @@ class GamesFilterRequest extends FormRequest
     {
         return [
             'genres' => 'nullable',
+            'status' => 'nullable',
+            'developers' => 'nullable',
         ];
     }
 
@@ -32,6 +34,10 @@ class GamesFilterRequest extends FormRequest
     {
         $this->merge([
             'genres' => isset($this->genres) ? explode(",", $this->genres) : null,
+            'status' => isset($this->status) ? array_map(function ($value){
+                return ucfirst($value);
+            }, explode(",", $this->status)) : null,
+            'developers' => isset($this->developers) ? explode(",", $this->developers) : null,
         ]);
     }
 }

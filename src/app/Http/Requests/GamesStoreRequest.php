@@ -28,6 +28,7 @@ class GamesStoreRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'developer_id' => 'required',
+            'status_id' => 'required',
             'genres' => 'nullable',
         ];
     }

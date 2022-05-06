@@ -14,11 +14,17 @@ class Games extends Model
     protected $fillable = [
         'name',
         'developer_id',
+        'status_id'
     ];
 
     public function developer()
     {
         return $this->belongsTo(Developers::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 
     public function genres()

@@ -26,7 +26,7 @@ class GamesIndexAction
      */
     private function getFilteredGames(array $request): Collection
     {
-        return Games::filter($this->makeFilter($request))->with('developer', 'genres')->get();
+        return Games::filter($this->makeFilter($request))->with('developer', 'genres', 'status')->get();
     }
 
     /**

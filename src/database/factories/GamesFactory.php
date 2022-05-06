@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Developers;
+use App\Models\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,6 +21,7 @@ class GamesFactory extends Factory
         return [
             'name' => $this->faker->company,
             'developer_id' => Developers::all()->random()->id,
+            'status_id' => Status::all()->random()->id,
         ];
     }
 }

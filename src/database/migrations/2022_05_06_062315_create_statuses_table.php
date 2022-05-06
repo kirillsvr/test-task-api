@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('games', function (Blueprint $table) {
-            $table->foreign('developer_id')->references('id')->on('developers')->onDelete('cascade');
+        Schema::create('statuses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('games', function (Blueprint $table) {
-            $table->dropForeign(['developer_id']);
-        });
+        Schema::dropIfExists('statuses');
     }
 };

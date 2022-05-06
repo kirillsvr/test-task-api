@@ -53,7 +53,7 @@ class GamesController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['success' => true, 'results' => new GamesResource(Games::with('developer', 'genres')->findOrFail($id))]);
+        return response()->json(['success' => true, 'results' => new GamesResource(Games::with('developer', 'genres', 'status')->findOrFail($id))]);
     }
 
     /**

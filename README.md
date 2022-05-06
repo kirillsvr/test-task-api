@@ -62,13 +62,15 @@
    Content-Type application/json
    ```
 
-| Название |                                                   Описание                                                   | Тип данных | Обязательный параметр |
-|---------:|:------------------------------------------------------------------------------------------------------------:|:-----------:|:----------------------|
-|   genres | Жанр игры, выбранный на основе идентификатора жанра в запросе. Вернет игры, которые относятся к этому жанру  | string      | Нет                   |
+|   Название |                                                                                                         Описание                                                                                                         | Тип данных | Обязательный параметр |
+|-----------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------:|:----------------------|
+|     genres |                               Жанр игры, выбранный на основе идентификатора жанра в запросе. Вернет игры, которые относятся к этому жанру. Можно перечислять идентификаторы через запятую                                | string      | Нет                   |
+| developers |                    Разработчик игры, выбранный на основе идентификатора разработчика в запросе. Вернет игры, которые относятся к данным разработчика. Можно перечислять идентификаторы через запятую                     | string      | Нет                   |
+|     status | Статус игры, выбранный на основе названия статуса в запросе. Вернет игры, которые находятся в данном статусе разработки. Всего существует 3 статуса: developing, beta, release. Можно перечислять названия через запятую | string      | Нет                   |
 
 #### Пример запроса
    ```bash
-   curl -H "Content-Type:application/json" -X GET "http://localhost:8886/api/v1/games?genres=1,2,5"
+   curl -H "Content-Type:application/json" -X GET "http://localhost:8886/api/v1/games?genres=1,2,5&status=beta,release&developers=1,3,6"
    ```
 
 #### Пример ответа
@@ -76,34 +78,150 @@
    {
        "success": true,
        "results": {
-           "count": 2,
+           "count": 12,
            "data": [
                {
-                   "id": 201,
-                   "name": "'Change Name'",
-                   "developer": "Rodriguez, Emmerich and Tromp",
+                   "id": 3,
+                   "name": "Brakus, Goodwin and Johnston",
+                   "developer": "Nolan, Thiel and Lowe",
+                   "status": "Beta",
                    "genres": [
-                       "et",
-                       "provident",
-                       "ut",
-                       "quas"
+                       "vel",
+                       "distinctio",
+                       "corrupti"
                    ],
-                   "created_at": "2022-05-05T16:55:54.000000Z"
+                   "created_at": "2022-05-06T07:01:43.000000Z"
                },
                {
-                   "id": 202,
-                   "name": "Change Name",
-                   "developer": "Rodriguez, Emmerich and Tromp",
+                   "id": 3,
+                   "name": "Brakus, Goodwin and Johnston",
+                   "developer": "Nolan, Thiel and Lowe",
+                   "status": "Beta",
                    "genres": [
-                       "ex",
-                       "quidem",
-                       "eius",
-                       "et",
-                       "est",
                        "vel",
-                       "quas"
+                       "distinctio",
+                       "corrupti"
                    ],
-                   "created_at": "2022-05-05T16:55:54.000000Z"
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 3,
+                   "name": "Brakus, Goodwin and Johnston",
+                   "developer": "Nolan, Thiel and Lowe",
+                   "status": "Beta",
+                   "genres": [
+                       "vel",
+                       "distinctio",
+                       "corrupti"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 10,
+                   "name": "Koepp, Thiel and Price",
+                   "developer": "Nolan, Thiel and Lowe",
+                   "status": "Beta",
+                   "genres": [
+                       "distinctio",
+                       "eum",
+                       "esse"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 13,
+                   "name": "Schiller and Sons",
+                   "developer": "Bartell, Weissnat and Kunze",
+                   "status": "Beta",
+                   "genres": [
+                       "distinctio"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 14,
+                   "name": "Dooley-Kilback",
+                   "developer": "Funk Group",
+                   "status": "Release",
+                   "genres": [
+                       "corrupti",
+                       "eum",
+                       "molestias"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 17,
+                   "name": "Conn, Armstrong and Eichmann",
+                   "developer": "Nolan, Thiel and Lowe",
+                   "status": "Beta",
+                   "genres": [
+                       "dignissimos",
+                       "corrupti",
+                       "eum",
+                       "esse"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 18,
+                   "name": "Barrows Group",
+                   "developer": "Nolan, Thiel and Lowe",
+                   "status": "Release",
+                   "genres": [
+                       "distinctio",
+                       "voluptatem",
+                       "molestias",
+                       "voluptatum"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 35,
+                   "name": "Corwin Ltd",
+                   "developer": "Bartell, Weissnat and Kunze",
+                   "status": "Release",
+                   "genres": [
+                       "vel",
+                       "corrupti",
+                       "eum",
+                       "esse"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 35,
+                   "name": "Corwin Ltd",
+                   "developer": "Bartell, Weissnat and Kunze",
+                   "status": "Release",
+                   "genres": [
+                       "vel",
+                       "corrupti",
+                       "eum",
+                       "esse"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 38,
+                   "name": "Yundt PLC",
+                   "developer": "Funk Group",
+                   "status": "Beta",
+                   "genres": [
+                       "corrupti"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
+               },
+               {
+                   "id": 40,
+                   "name": "Morar-Leuschke",
+                   "developer": "Funk Group",
+                   "status": "Beta",
+                   "genres": [
+                       "vel",
+                       "esse"
+                   ],
+                   "created_at": "2022-05-06T07:01:43.000000Z"
                }
            ]
        }
@@ -140,6 +258,7 @@
            "id": 249,
            "name": "Senger-Hagenes",
            "developer": "Rodriguez, Emmerich and Tromp",
+           "status": "Release",
            "genres": [
                "provident",
                "quae"
@@ -181,6 +300,7 @@
            "id": 249,
            "name": "Senger-Hagenes",
            "developer": "Rodriguez, Emmerich and Tromp",
+           "status": "Developing",
            "genres": [
                "provident",
                "quae"
@@ -223,6 +343,7 @@
            "id": 231,
            "name": "Name",
            "developer": "Stokes-Macejkovic",
+           "status": "Developing",
            "genres": [],
            "created_at": "2022-05-05T16:55:54.000000Z"
        }
